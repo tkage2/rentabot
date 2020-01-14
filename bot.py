@@ -1,13 +1,15 @@
 import socket
 import parser
+import connection
 
 ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server = "chat.freenode.net"
+port = 6667
 channel = "##bot-testing-123"
 botnick = "PythonBot123"
 admin = ""
 
-ircsock.connect((server, 6667))
+ircsock.connect((server, port))
 ircsock.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " " + botnick + "n", "UTF-8"))
 ircsock.send(bytes("NICK "+ botnick +"n", "UTF-8"))
 

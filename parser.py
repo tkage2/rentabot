@@ -1,4 +1,6 @@
-class Parser():
+import connection
+
+class Parser:
     def __init__(self, irc_socket):
         self.irc_socket = irc_socket
         
