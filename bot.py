@@ -8,6 +8,9 @@ port = 6667
 channel = "##bot-testing-123"
 botnick = "PythonBot123"
 admin = ""
+password = "12345"
+
+admin_list = []
 
 ircsock.connect((server, port))
 ircsock.send(bytes("USER "+ botnick +" "+ botnick +" "+ botnick + " " + botnick + "n", "UTF-8"))
@@ -38,6 +41,9 @@ def main():
             if len(name) < 17:
                 if message.find('Hi ' + botnick) != -1:
                     sendmsg("Hello " + name + "!")
+                if message.find(password) != -1:
+                    admin_list.append(name)
+                    sendmsg("You are now added to admin-list!")
                 if message[:5].find('.tell') != -1:
                     target = message.split(' ', 1)[1]
                 if target.find(' ') != -1:
